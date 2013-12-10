@@ -1,0 +1,33 @@
+<div id="countdown">
+</div>
+<script>
+now = new Date()
+xmas = new Date("2013-12-25")
+counter_seconds = Math.floor((xmas-now)/1000)
+
+function processTime()
+{
+	counter_seconds--
+	setText(parseTime(counter_seconds))
+	if (counter_seconds == 0)
+	window.clearInterval(timer)
+}
+function parseTime(counter_seconds)
+{
+	seconds = counter_seconds%60
+	minutes = Math.floor(counter_seconds/60)
+	hours = Math.floor(minutes/60)
+	minutes = minutes%60
+	days = Math.floor(hours/24)
+	hours = hours%24
+	return ""+days+" days "+hours+":"+minutes+":"+seconds
+}
+function setText(text)
+{
+	element = document.getElementById("countdown");
+	element.innerHTML = text;	
+} 
+setText(parseTime(counter_seconds))
+timer = setInterval(processTime, 1000)
+
+</script>
